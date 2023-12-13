@@ -2,55 +2,21 @@
 <html>
   <head>
     <meta name="description" content="A basic banner to be used when a screenshot of the app is unavailable">
-
-    <define var="name" to="slot name" />
-    <define var="description" to="slot description">
-    <define var="icon" as="svg" to="slot icon">
-    <define var="accent" to="css --accent">
+    
+    <define required var="name" to="slot name" />
+    <define required var="description" to="slot description" />
+    <define required var="icon" as="svg" to="slot icon" />
+    <define var="accent" to="css --accent" />
   </head>
     <style>
+      @import 
       
       body {
         width: 1200;
         height: 350;
-      }  
+      }
     </style>
   <body>
     
   </body>
-</html> 
-
-{
-  "description": "A basic banner to be used when a complete screenshot of the app is unavailable",
-
-  "variables": {
-    "name": "string",
-    "description": "string",
-    "icon": "file"
-  },
-
-  "objects": {},
-
-  "document": {
-    "width": 1200,
-    "height": 350,
-    "background": "#000000",
-
-    "body": [
-      {
-        "type": "text",
-        "font": "45px Inter Bold",
-        "content": { "type": "variable", "content": "name" },
-      },
-      {
-        "type": "text",
-        "font": "30px Inter",
-        "content": { "type": "variable", "content": "description" }
-      },
-      {
-        "type": "image",
-        "content": { "type": "variable", "content": "icon" }
-      }
-    ]
-  }
-}
+</html>
