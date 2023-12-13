@@ -3,20 +3,37 @@
   <head>
     <meta name="description" content="A basic banner to be used when a screenshot of the app is unavailable">
     
-    <define required var="name" to="slot name" />
-    <define required var="description" to="slot description" />
-    <define required var="icon" as="svg" to="slot icon" />
+    <define var="name" to="slot name" />
+    <define var="description" to="slot description" />
+    <!-- a file's text content. use file/image-binary to get an <img> -->
+    <define required var="icon" as="file/text-content" to="slot icon" />
     <define var="accent" to="css --accent" />
   </head>
-    <style>
-      @import 
       
-      body {
-        width: 1200;
-        height: 350;
-      }
-    </style>
-  <body>
+  <style>
+    @import url("https://retune.stream/assets/fonts/inter.css"); /* temporary, maybe use gfonts later..? */
     
+    body {
+      width: 1200;
+      height: 350;
+      background-color: black;
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: white;
+    }
+
+    body > div {
+      display: flex;
+    }
+  </style>
+      
+  <body>
+    <div>
+      <slot id="icon"></slot>
+      <div>
+        <slot id="name">Retune</slot>
+        <slot id="description">Cider but not shit lol</slot>
+      </div>
+    </div>
   </body>
 </html>
