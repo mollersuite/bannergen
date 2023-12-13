@@ -7,12 +7,7 @@
     "icon": "file"
   },
 
-  "objects": {
-    "gradient": {
-      "type": "gradient.linear",
-      "stops": []
-    }
-  },
+  "objects": {},
 
   "document": {
     "width": 1200,
@@ -23,7 +18,16 @@
       {
         "type": "text",
         "font": "45px Inter Bold",
-        "content": { "type": "variable", "content": "name" }
+        "content": { "type": "variable", "content": "name" },
+      },
+      {
+        "type": "text",
+        "font": "30px Inter",
+        "content": { "type": "variable", "content": "description" }
+      },
+      {
+        "type": "image",
+        "content": { "type": "variable", "content": "icon" }
       }
     ]
   }
