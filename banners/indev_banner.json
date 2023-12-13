@@ -1,0 +1,30 @@
+{
+  "description": "A basic banner to be used when a complete screenshot of the app is unavailable",
+
+  "variables": {
+    "name": "string",
+    "description": "string",
+    "icon": "file"
+  },
+
+  "objects": {
+    "gradient": {
+      "type": "gradient.linear",
+      "stops": []
+    }
+  },
+
+  "document": {
+    "width": 1200,
+    "height": 350,
+    "background": "#000000",
+
+    "body": [
+      {
+        "type": "text",
+        "font": "45px Inter Bold",
+        "content": { "type": "variable", "content": "name" }
+      }
+    ]
+  }
+}
