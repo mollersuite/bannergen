@@ -51,8 +51,8 @@ readdir(`${__dirname}/../banners`).then(async (templates) => {
     let output = (await prompt({
         type: "input",
         name: "output",
-        message: "Please set the following variables.",
-        initial: resolve(`${__dirname}/../renders/${basename(selected_template.template, ".html")}`)
-    }) as { fillin: { [key: string]: string } }).fillin
+        message: "Where would you like to save the render?",
+        initial: resolve(`${__dirname}/../renders/${basename(selected_template.template, ".html")}.png`)
+    }) as { output: string } ).output
 
 })
