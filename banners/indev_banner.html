@@ -8,62 +8,69 @@
     <!-- a file's text content. use image-binary to get an <img> -->
     <define required var="icon" as="text-content" to="slot icon" />
     <define var="accent" to="css --accent" />
-  </head>
+
+          
+    <style>
+      @import url("https://retune.stream/assets/fonts/inter.css"); /* temporary, maybe use gfonts later..? */
       
-  <style>
-    @import url("https://retune.stream/assets/fonts/inter.css"); /* temporary, maybe use gfonts later..? */
-    
-    body {
-      width: 1200;
-      height: 350;
-      background-color: black;
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      color: white;
-    }
+      body {
+        width: 1200px;
+        height: 350px;
+        background-color: black;
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        color: white;
+      }
 
-    body > div {
-      position:absolute;
-      left:0px;
-      top:0px;
-      width:100%;
-      height:100%;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      display: flex;
-    }
+      body > div {
+        position:absolute;
+        left:0px;
+        top:0px;
+        width:100%;
+        height:100%;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        display: flex;
+        flex-direction: row;
+      }
 
-    body > div > .icContainer {
-      width: 250px;
-      height: 250px;
-    }
+      body > div > .icContainer {
+        width: 250px;
+        height: 250px;
+      }
 
-    body > div > .icContainer > #icon {
-      margin: auto;
-      height: 100%;
-      width: auto;
-    }
+      body > div > .icContainer > #icon {
+        margin: auto;
+        height: 100%;
+        width: auto;
+      }
 
-    body > div > .text > * {
-      margin: 0;
-    }
+      body > div > .text {
+        display: flex;
+        flex-direction: column;
+      }
 
-    body > div > .text > h1 {
-      font-weight: 600;
-      font-size: 45pt;
-    }
-    
-    body > div > .text > h2 {
-      font-weight: 400;
-      font-size: 30pt;
-      color: #AAAAAA;
-    }
-  </style>
+      body > div > .text > * {
+        margin: 0;
+      }
+
+      body > div > .text > h1 {
+        font-weight: 600;
+        font-size: 60px;
+      }
+      
+      body > div > .text > h2 {
+        font-weight: 400;
+        font-size: 45px;
+        color: #999999;
+      }
+    </style>
+  </head>
       
   <body>
     <div>
-      <div class="icContainer>
+      <div class="icContainer">
         <slot id="icon"></slot>
       </div>
       <div class="text">

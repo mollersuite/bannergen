@@ -55,4 +55,9 @@ readdir(`${__dirname}/../banners`).then(async (templates) => {
         initial: resolve(`${__dirname}/../renders/${basename(selected_template.template, ".html")}.png`)
     }) as { output: string } ).output
 
+    await render({
+        output,
+        html: $.html()
+    })
+
 })

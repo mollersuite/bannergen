@@ -6,10 +6,10 @@ import type { CheerioAPI } from "cheerio";
 
 export let transformations: { [x in Transformation]: ($: CheerioAPI, target: string, value: string) => void } = {
     slot: ($, target, value) => { // replace the innerHTML of slots in the DOM
-        $(`slot[${target}]`).html(value)
+        $(`slot#${target}`).html(value)
     },
     "slot-text": ($, target, value) => { // replace the text of slots in the DOM
-        $(`slot[${target}]`).text(value)
+        $(`slot#${target}`).text(value)
     },
     css: ($, target, value) => {
         // probably not the greatest way to do it
