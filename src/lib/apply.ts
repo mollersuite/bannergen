@@ -18,8 +18,8 @@ export let transformations: { [x in Transformation]: ($: CheerioAPI, target: str
     }
 } as const
 
-type Transformation = "slot" | "slot-text" | "css"
-type ApplicationTarget = `${Transformation} ${string}`
+export type Transformation = "slot" | "slot-text" | "css"
+export type ApplicationTarget = `${Transformation} ${string}`
 
 export default function apply($: CheerioAPI, inputs: { [key: ApplicationTarget]: string }) {
     Object.entries(inputs).forEach(([to, value]) => {

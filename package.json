@@ -13,6 +13,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "enquirer": "^2.4.1",
+    "mime": "^4.0.0",
     "node-html-to-image": "^4.0.0"
   },
   "devDependencies": {
