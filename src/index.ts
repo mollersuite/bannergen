@@ -1,6 +1,8 @@
 import { load } from "cheerio"
 import { prompt } from "enquirer"
 import { readFile, readdir } from "fs/promises"
+import render from "node-html-to-image"
+import { basename, resolve } from "path"
 
 import extract from "./lib/extract"
 import transform from "./lib/transform"
@@ -19,16 +21,38 @@ readdir(`${__dirname}/../banners`).then(async (templates) => {
 
     let base = extract($);
 
-    let x = await prompt({
+    let inputs = (await prompt({
         type: "form",
         name: "fillin",
-        message: "Please update the following variables.",
+        message: "Please set the following variables.",
         choices: base.variables.map(v => {
             return {
                 name: v.name,
                 message: `${v.name}${v.required ? "*" : ""}`
             }
-        }) // todo: type gymnastics (keyof typeof base.variables[number].name?)
-    }) as { fillin: { [key: string]: string } }
+        })
+    }) as { fillin: { [key: string]: string } }).fillin
+
+    let applications = (await Promise.all(base.variables.map(async v => {
+        if (!inputs[v.name]) {
+            if (v.required) throw `did not provide required value ${v.name}`
+            else return
+        }
+
+        let value: string
+        if (v.transformation) value = await transform(v.transformation, inputs[v.name])!
+        else value = inputs[v.name]
+
+        return [ v.target, value ]
+    }))).filter((e): e is string[] => Boolean(e))
+
+    apply($, Object.fromEntries(applications))
+
+    let output = (await prompt({
+        type: "input",
+        name: "output",
+        message: "Please set the following variables.",
+        initial: resolve(`${__dirname}/../renders/${basename(selected_template.template, ".html")}`)
+    }) as { fillin: { [key: string]: string } }).fillin
 
 })
