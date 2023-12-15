@@ -1,0 +1,27 @@
+[
+    {
+        "$ID": "split",
+
+        "name": "split",
+        "role": "Designer, developer",
+        "profile-picture": "[ASSET] mahiron.png",
+        "accent": "#66AAFF"
+    },
+    {
+        "$ID": "jack",
+
+        "name": "Jack W.",
+        "role": "Co-founder",
+        "profile-picture": "[ASSET] jack.webp",
+        "accent": "#FFAA66",
+        "borderless": "true"
+    },
+    {
+        "$ID": "aa",
+
+        "name": "AAGaming",
+        "role": "Uhhhhhhhhhhhhhhhhhhhhhhhh",
+        "profile-picture": "[ASSET] aa.webp",
+        "accent": "#8839ef"
+    }
+]

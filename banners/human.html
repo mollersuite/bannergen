@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="title" content="Human">
+    <meta name="description" content="Small element describing a person and their role">
+    
+    <define var="name" to="slot-text name"></define>
+    <define var="role" to="slot-text role"></define>
+    <define required var="profile-picture" as="image-binary" to="slot pfp"></define>
+    <define var="accent" to="css --accent"></define>
+    <define var="scale" to="css --scale"></define>
+    <define var="borderless" to="mode noCircle"></define>
+
+          
+    <style>
+      @import url("https://retune.stream/assets/fonts/inter.css"); /* temporary, maybe use gfonts later..? */
+      
+      :root {
+        --scale: 1;
+      }
+      
+      body {
+        width: calc( 600px * var(--scale) );
+        height: calc( 200px * var(--scale) );
+        background-color: black;
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        color: white;
+        position:absolute;
+      }
+
+      body > .contentContainer {
+        position:absolute;
+        left:0px;
+        top:0px;
+        width:100%;
+        height:100%;
+        justify-content: left;
+        align-items: center;
+        gap: calc( 20px * var(--scale) );
+        display: flex;
+        flex-direction: row;
+        padding-left: calc( 50px * var(--scale) );
+      }
+
+      body > .contentContainer > .icContainer {
+        width: calc( 120px * var(--scale) );
+        height: calc( 120px * var(--scale) );
+        border-radius: calc( 120px * var(--scale) );
+        border:calc( 5px * var(--scale) ) solid gray;
+        overflow: hidden;
+      }
+      
+      .noCircle > .contentContainer > .icContainer {
+        border-radius: 0;
+        border: none;
+      }
+
+      .noCircle > .contentContainer > .icContainer > #pfp {
+        object-fit:scale-down;
+      }
+
+      body > .contentContainer > .icContainer > #pfp > img {
+        height:100%;
+        width:100%;
+        object-fit:cover;
+      }
+
+      body > .contentContainer > .text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      body > .contentContainer > .text > * {
+        margin: 0;
+      }
+
+      body > .contentContainer > .text > h1 {
+        font-weight: 600;
+        font-size: calc( 35px * var(--scale) );
+      }
+      
+      body > .contentContainer > .text > h2 {
+        font-weight: 400;
+        font-size: calc( 25px * var(--scale) );
+        color: #999999;
+      }
+
+      body > #accent {
+        position: absolute;
+        left:0%;
+        top:0%;
+        width:calc( 10px * var(--scale) );
+        height:100%;
+        background: var(--accent);
+      }
+
+    </style>
+  </head>
+      
+  <body>
+    <div id="accent"></div>
+
+    <div class="contentContainer">
+      <div class="icContainer">
+        <slot id="pfp"></slot>
+      </div>
+      <div class="text">
+        <h1><slot id="name">Person</slot></h1>
+        <h2><slot id="role">Role</slot></h2>
+      </div>
+    </div>
+  </body>
+</html>

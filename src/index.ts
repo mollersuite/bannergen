@@ -43,7 +43,8 @@ readdir(`${__dirname}/../presets`).then(async (projectList) => {
                 choices: base.variables.map(v => {
                     return {
                         name: v.name,
-                        message: `${v.name}${v.required ? "*" : ""}`
+                        message: `${v.name}${v.required ? "*" : ""}`,
+                        initial: v.target.startsWith("mode ") ? "y/n" : undefined
                     }
                 })
             },
@@ -61,18 +62,26 @@ readdir(`${__dirname}/../presets`).then(async (projectList) => {
 
         // alright, let's start rendering everything in that preset
 
-        let templatePresets = 
-            await Promise.all(
-                (await readdir(`${__dirname}/../presets/${preset}/variables`))
-                .map(async (filename) => {
+        let templatePresets: {template: string, inputs: {[key: string]: string}}[] = [];
+        
+        (await Promise.all(
+            (await readdir(`${__dirname}/../presets/${preset}/variables`))
+            .map(async (filename) => {
+                // read the JSON
+                let templateValues = JSON.parse(
+                    (await readFile(`${__dirname}/../presets/${preset}/variables/${filename}`)).toString()
+                ) as { [key: string]: string } | { [key: string]: string }[]
+
+                // if it's not already an array, make it one
+                if (!Array.isArray(templateValues)) 
+                    templateValues = [ templateValues ] as { [key: string]: string }[]
+
+                // turn each item in the array into a template preset
+                return templateValues.map(v => {
                     return {
                         template: basename(filename, ".json"),
                         inputs: Object.fromEntries(
-                            Object.entries(
-                                JSON.parse(
-                                    (await readFile(`${__dirname}/../presets/${preset}/variables/${filename}`)).toString()
-                                ) as { [key: string]: string }
-                            ).map(([key, value]) => { 
+                            Object.entries(v).map(([key, value]) => { 
                                 return [ key, 
                                     value.startsWith("[ASSET] ")
                                     // Resolve "[ASSET] abc.xyz" to "./presets/preset/assets/abc.xyz" 
@@ -83,10 +92,16 @@ readdir(`${__dirname}/../presets`).then(async (projectList) => {
                         )
                     }
                 })
-            )
+
+            })
+            // unwrap all of the arrays filled with template presets
+            // into one large one
+        )).forEach((v: typeof templatePresets) => {
+            v.forEach(e => templatePresets.push(e))
+        })
 
         templatePresets.forEach(async ({template, inputs}, x) => {
-            let outDir = resolve(`${__dirname}/../renders/${preset}-${template}.png`)
+            let outDir = resolve(`${__dirname}/../renders/${inputs["$ID"] || preset}-${template}.png`)
             await render(template, inputs, outDir)
             console.log(`Rendered to ${outDir}`)
         })

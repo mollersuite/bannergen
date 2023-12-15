@@ -1,0 +1,6 @@
+{
+    "name": "bannergen",
+    "description": "Script to generate pretty\n assets for projects",
+    "icon": "[ASSET] gnome-paintbrush.svg",
+    "allotted-text-space": "100%"
+}
