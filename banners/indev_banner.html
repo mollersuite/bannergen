@@ -37,8 +37,8 @@
       }
 
       body > .contentContainer > .icContainer {
-        width: 200px;
-        height: 200px;
+        width: 170px;
+        height: 170px;
       }
 
       body > .contentContainer > .icContainer > #icon > svg {
@@ -51,6 +51,7 @@
       body > .contentContainer > .text {
         display: flex;
         flex-direction: column;
+        max-width:800px;
       }
 
       body > .contentContainer > .text > * {
@@ -59,30 +60,29 @@
 
       body > .contentContainer > .text > h1 {
         font-weight: 600;
-        font-size: 60px;
+        font-size: 70px;
       }
       
       body > .contentContainer > .text > h2 {
         font-weight: 400;
-        font-size: 45px;
+        font-size: 35px;
         color: #999999;
       }
 
-      body > #accent_gradient {
+      body > #accent {
         position: absolute;
-        left:50%;
+        left:0%;
         top:0%;
-        width:50%;
+        width:10px;
         height:100%;
-        background: linear-gradient(to right, transparent, var(--accent));
-        opacity: 0.5
+        background: var(--accent);
       }
 
     </style>
   </head>
       
   <body>
-    <div id="accent_gradient"></div>
+    <div id="accent"></div>
 
     <div class="contentContainer">
       <div class="icContainer">

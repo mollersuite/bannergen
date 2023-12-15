@@ -1,0 +1,6 @@
+{
+    "name": "monofile",
+    "description": "Discord-based file sharing",
+    "icon": "[ASSET] monofile.svg",
+    "accent": "#66AAFF"
+}

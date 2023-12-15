@@ -85,10 +85,10 @@ readdir(`${__dirname}/../presets`).then(async (projectList) => {
                 })
             )
 
-        templatePresets.forEach(({template, inputs}, x) => {
+        templatePresets.forEach(async ({template, inputs}, x) => {
             let outDir = resolve(`${__dirname}/../renders/${preset}-${template}.png`)
-            render(template, inputs, outDir)
-            console.log(`${x}/${templatePresets.length}: Rendered to ${outDir}`)
+            await render(template, inputs, outDir)
+            console.log(`Rendered to ${outDir}`)
         })
 
     }
