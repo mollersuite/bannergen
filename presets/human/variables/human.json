@@ -5,7 +5,8 @@
         "name": "split",
         "role": "Designer, developer",
         "profile-picture": "[ASSET] mahiron.png",
-        "accent": "#66AAFF"
+        "accent": "#66AAFF",
+        "scale": "2"
     },
     {
         "$ID": "jack",
