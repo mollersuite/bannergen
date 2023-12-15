@@ -1,0 +1,5 @@
+{
+    "name": "bannergen",
+    "description": "A script to quickly generate pretty assets for new projects",
+    "icon": "[ASSET] gnome-paintbrush.svg"
+}
