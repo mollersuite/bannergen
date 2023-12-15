@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="title" content="Indev social banner">
+    <meta name="description" content="A banner to be used for embedding in socials, etc. when a screenshot of the app is unavailable or if a short description doesn't fit alongside a screenshot">
+    
+    <define var="name" to="slot-text name"></define>
+    <define var="description" to="slot-text description"></define>
+    <define required var="icon" as="text-content" to="slot icon"></define>
+    <define var="accent" to="css --accent"></define>
+    <define var="allotted-text-space" to="css --forced-maxwidth"></define>
+
+          
+    <style>
+      @import url("https://retune.stream/assets/fonts/inter.css"); /* temporary, maybe use gfonts later..? */
+      
+      :root {
+        --forced-maxwidth: 850px;
+      }
+
+      body {
+        width: 1920px;
+        height: 1080px;
+        background-color: black;
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        color: white;
+        position:absolute;
+      }
+
+      body > .information {
+        position:absolute;
+        left:200px;
+        top:200px;
+        display: flex;
+        flex-direction: column;
+        max-width: var(--forced-maxwidth);
+      }
+
+      body > .information > * {
+        margin: 0;
+        font-size: 90px;
+      }
+
+      body > .information > h1 {
+        font-weight: 600;
+      }
+      
+      body > .information > h2 {
+        font-weight: 400;
+      }
+
+      body > .information > slot > svg {
+        height: 300px;
+        width: 300px;
+      }
+
+      body > .information > .icon_gap {
+        height:40px;
+      }
+
+      body > #accent {
+        position: absolute;
+        left:calc( 100% - 1500px );
+        top:calc( 100% - 1500px );
+        width:3000px;
+        height:3000px;
+        background: radial-gradient(var(--accent) 5%, transparent 70%);
+        opacity: 0.3;
+      }
+
+    </style>
+  </head>
+      
+  <body>
+    <div id="accent"></div>
+    <slot id="screenshot"></slot>
+
+    <div class="information">
+      <slot id="icon"></slot>
+      <div class="icon_gap"></div>
+      <h1><slot id="name">Retune</slot></h1>
+      <h2><slot id="description">Cider but not shit lol</slot></h2>
+    </div>
+  </body>
+</html>

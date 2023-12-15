@@ -1,0 +1,6 @@
+{
+    "name": "RoControl",
+    "description": "Small-scale remote moderation tool for Roblox",
+    "icon": "[ASSET] rocontrol.svg",
+    "accent": "#66AAFF"
+}

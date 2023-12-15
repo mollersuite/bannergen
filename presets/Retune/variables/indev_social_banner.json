@@ -1,0 +1,6 @@
+{
+    "name": "Retune",
+    "description": "An Apple Music client from Etcetera",
+    "icon": "[ASSET] retune.svg",
+    "accent": "#b4befe"
+}

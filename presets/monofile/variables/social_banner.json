@@ -1,0 +1,7 @@
+{
+    "name": "monofile",
+    "description": "File sharing\nover Discord",
+    "icon": "[ASSET] monofile.svg",
+    "app-screenshot-lg": "[ASSET] app-screenshot-lg.png",
+    "accent": "#66AAFF"
+}

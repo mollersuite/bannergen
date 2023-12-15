@@ -1,5 +1,5 @@
 import { type CheerioAPI, load } from "cheerio"
-import { readFile, readdir } from "fs/promises"
+import { readFile } from "fs/promises"
 import renderHtml from "node-html-to-image"
 
 import extract from "./helpers/extract"

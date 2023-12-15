@@ -9,7 +9,15 @@ export let transformations: { [x in Transformation]: ($: CheerioAPI, target: str
         $(`slot#${target}`).html(value)
     },
     "slot-text": ($, target, value) => { // replace the text of slots in the DOM
-        $(`slot#${target}`).text(value)
+        // updated to make it so linebreaks function :)
+        // probably a poor idea. lmk
+        $(`slot#${target}`).html(
+            value
+                .replace(/\&/g,"&amp;")
+                .replace(/\</g,"&lt;")
+                .replace(/\>/g,"&rt;")
+                .replace(/\n/g,"<br>")
+        )
     },
     css: ($, target, value) => {
         // probably not the greatest way to do it

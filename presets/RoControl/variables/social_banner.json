@@ -1,0 +1,8 @@
+{
+    "name": "RoControl",
+    "description": "Small-scale remote moderation tool",
+    "icon": "[ASSET] rocontrol.svg",
+    "app-screenshot-lg": "[ASSET] rocontrol_erp_logs_downscaled.png",
+    "accent": "#66AAFF",
+    "allotted-text-space": "850px"
+}
