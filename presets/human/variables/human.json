@@ -3,10 +3,10 @@
         "$ID": "split",
 
         "name": "split",
-        "role": "Designer, developer",
+        "role": "Developer",
         "profile-picture": "[ASSET] mahiron.png",
         "accent": "#66AAFF",
-        "scale": "2"
+        "website": "me.fyle.uk"
     },
     {
         "$ID": "jack",
@@ -15,14 +15,16 @@
         "role": "Co-founder",
         "profile-picture": "[ASSET] jack.webp",
         "accent": "#FFAA66",
-        "borderless": "true"
+        "borderless": "true",
+        "website": "jack.cab"
     },
     {
         "$ID": "aa",
 
         "name": "AAGaming",
-        "role": "Uhhhhhhhhhhhhhhhhhhhhhhhh",
+        "role": "Developer",
         "profile-picture": "[ASSET] aa.webp",
-        "accent": "#8839ef"
+        "accent": "#8839ef",
+        "website": "aagaming.me"
     }
 ]
