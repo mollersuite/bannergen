@@ -3,11 +3,11 @@
   <head>
     <meta name="description" content="A basic banner to be used when a screenshot of the app is unavailable">
     
-    <define var="name" to="slot name" />
-    <define var="description" to="slot description" />
+    <define var="name" to="slot name"></define>
+    <define var="description" to="slot description"></define>
     <!-- a file's text content. use image-binary to get an <img> -->
-    <define required var="icon" as="text-content" to="slot icon" />
-    <define var="accent" to="css --accent" />
+    <define required var="icon" as="text-content" to="slot icon"></define>
+    <define var="accent" to="css --accent"></define>
 
           
     <style>
@@ -20,9 +20,10 @@
         margin: 0;
         font-family: "Inter", sans-serif;
         color: white;
+        position:absolute;
       }
 
-      body > div {
+      body > .contentContainer {
         position:absolute;
         left:0px;
         top:0px;
@@ -30,46 +31,60 @@
         height:100%;
         justify-content: center;
         align-items: center;
-        gap: 20px;
+        gap: 40px;
         display: flex;
         flex-direction: row;
       }
 
-      body > div > .icContainer {
-        width: 250px;
-        height: 250px;
+      body > .contentContainer > .icContainer {
+        width: 200px;
+        height: 200px;
       }
 
-      body > div > .icContainer > #icon {
+      body > .contentContainer > .icContainer > #icon > svg {
         margin: auto;
-        height: 100%;
+        min-height: 100%;
+        aspect-ratio: 1 / 1;
         width: auto;
       }
 
-      body > div > .text {
+      body > .contentContainer > .text {
         display: flex;
         flex-direction: column;
       }
 
-      body > div > .text > * {
+      body > .contentContainer > .text > * {
         margin: 0;
       }
 
-      body > div > .text > h1 {
+      body > .contentContainer > .text > h1 {
         font-weight: 600;
         font-size: 60px;
       }
       
-      body > div > .text > h2 {
+      body > .contentContainer > .text > h2 {
         font-weight: 400;
         font-size: 45px;
         color: #999999;
       }
+
+      body > #accent_gradient {
+        position: absolute;
+        left:50%;
+        top:0%;
+        width:50%;
+        height:100%;
+        background: linear-gradient(to right, transparent, var(--accent));
+        opacity: 0.5
+      }
+
     </style>
   </head>
       
   <body>
-    <div>
+    <div id="accent_gradient"></div>
+
+    <div class="contentContainer">
       <div class="icContainer">
         <slot id="icon"></slot>
       </div>
